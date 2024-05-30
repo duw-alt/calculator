@@ -3,6 +3,8 @@ let buttons = document.querySelectorAll('.value');
 let num1, operator1, num2, operator2, valueArr = null;
 let dotClicked = false;
 
+
+
 buttons.forEach(button => {
   button.addEventListener('click', () => {
     if (button.textContent === '.') {
@@ -18,6 +20,7 @@ buttons.forEach(button => {
 
       valueArr = display.textContent.split(' ');
       operator2 = valueArr[3];
+      
       if(operator2 !== undefined) {
         operate(num1, operator1, num2);
         display.textContent += ' ' + operator2 + ' ';
@@ -61,6 +64,14 @@ const operate = (num1, operator1, num2) => {
     }
   }
 };
+
+function deleteButton() {
+  if (display.textContent.slice(-1) === ' ') {
+    display.textContent = display.textContent.slice(0, -3); 
+  } else {
+    display.textContent = display.textContent.slice(0, -1); 
+  }
+}
 
 function clearDisplay() {
   display.textContent = null;
